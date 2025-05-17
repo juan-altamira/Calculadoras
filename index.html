@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un proyecto para practicar programación web">
+    <title>Mi Proyecto Web</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CALCULADORAS</h1>
+            <p class="subtitle">Herramientas matemáticas avanzadas a tu alcance</p>
+        </div>
+        <div class="particles" id="particles"></div>
+    </header>
+    
+    <main>
+        <div class="calculator-container">
+            <h2>Calculadora Científica</h2>
+            <div class="calculator">
+                <div class="display">
+                    <input type="text" id="result" readonly>
+                    <div class="expression" id="expression"></div>
+                </div>
+                <div class="buttons">
+                    <button class="sci-operator" onclick="scientificFunction('Math.sin')">sin</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.cos')">cos</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.tan')">tan</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.sqrt', true)">√</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.log')">ln</button>
+                    
+                    <button class="operator" onclick="appendValue('7')">7</button>
+                    <button class="operator" onclick="appendValue('8')">8</button>
+                    <button class="operator" onclick="appendValue('9')">9</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.PI')">π</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.E')">e</button>
+                    
+                    <button class="operator" onclick="appendValue('4')">4</button>
+                    <button class="operator" onclick="appendValue('5')">5</button>
+                    <button class="operator" onclick="appendValue('6')">6</button>
+                    <button class="operator" onclick="appendValue('+')">+</button>
+                    <button class="sci-operator" onclick="appendValue('(')">(</button>
+                    
+                    <button class="operator" onclick="appendValue('1')">1</button>
+                    <button class="operator" onclick="appendValue('2')">2</button>
+                    <button class="operator" onclick="appendValue('3')">3</button>
+                    <button class="operator" onclick="appendValue('-')">-</button>
+                    <button class="sci-operator" onclick="appendValue(')')">)</button>
+                    
+                    <button class="operator" onclick="clearDisplay()">C</button>
+                    <button class="operator" onclick="appendValue('0')">0</button>
+                    <button class="operator" onclick="appendValue('.')">.</button>
+                    <button class="operator" onclick="appendValue('*')">×</button>
+                    <button class="operator" onclick="appendValue('/')">÷</button>
+                    
+                    <button class="sci-operator" onclick="scientificFunction('Math.pow(10,')">10ˣ</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.pow(', true)">xʸ</button>
+                    <button class="sci-operator" onclick="scientificFunction('Math.log10')">log</button>
+                    <button class="sci-operator" onclick="scientificFunction('factorial')">x!</button>
+                    <button class="operator equal" onclick="calculate()">=</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calculadora de Inflación Anual -->
+        <div class="inflation-calculator">
+            <h2>Calculadora de Inflación Anual</h2>
+            <div class="inflation-simple">
+                <div class="input-group">
+                    <label for="monthly-inflation">Inflación Mensual (%):</label>
+                    <input type="number" id="monthly-inflation" step="0.1" min="0.1" placeholder="Ej: 5.5" autofocus>
+                    <div class="result-simple">
+                        <span>Inflación Anual:</span>
+                        <span id="annual-inflation" class="highlight">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calculadora de Porcentaje de Incremento -->
+        <div class="percentage-calculator">
+            <h2>Calculadora de Porcentaje de Incremento</h2>
+            <div class="input-group">
+                <label for="initial-price">Precio Inicial (X):</label>
+                <input type="number" id="initial-price" placeholder="Ej: 100">
+                <label for="new-price">Precio Nuevo (Y):</label>
+                <input type="number" id="new-price" placeholder="Ej: 120">
+                <div class="result-simple">
+                    <span>Porcentaje de aumento:</span>
+                    <span id="percentage-result" class="highlight">-</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p> 2025 Mi Proyecto Web</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Efecto de partículas
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                createParticle(container);
+            }
+            
+            // Crear partículas adicionales periódicamente
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% de probabilidad de crear una nueva partícula
+                    createParticle(container);
+                }
+            }, 1000);
+        });
+        
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Tamaño aleatorio entre 1px y 3px
+            const size = Math.random() * 2 + 1;
+            
+            // Posición horizontal aleatoria
+            const posX = Math.random() * 100;
+            
+            // Duración de la animación aleatoria
+            const duration = Math.random() * 15 + 10;
+            
+            // Establecer estilos
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.opacity = Math.random() * 0.5 + 0.1; // Opacidad entre 0.1 y 0.6
+            
+            // Añadir al contenedor
+            container.appendChild(particle);
+            
+            // Eliminar la partícula cuando termine la animación
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+    </script>
+</body>
+</html>

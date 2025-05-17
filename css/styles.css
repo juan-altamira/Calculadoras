@@ -1,0 +1,476 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #f7df1e; /* Amarillo JS */
+    --secondary-color: #323330; /* Negro JS */
+    --light-color: #f4f4f4;
+    --dark-color: #181818; /* Fondo oscuro */
+    --shadow: 0 4px 6px rgba(50, 51, 48, 0.2);
+}
+
+body {
+    font-family: 'Fira Code', 'Consolas', 'monospace';
+    line-height: 1.7;
+    color: var(--primary-color);
+    background-color: var(--dark-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Estilos del encabezado */
+header {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    color: #fff;
+    padding: 4rem 1rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #ff6b6b, var(--primary-color));
+    background-size: 200% auto;
+    animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: none;
+    position: relative;
+    display: inline-block;
+    padding: 0 2rem;
+    background: linear-gradient(120deg, var(--primary-color), #ffd700, #ff8c00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: textGradient 8s ease infinite;
+    text-shadow: 2px 2px 15px rgba(247, 223, 30, 0.2);
+}
+
+@keyframes textGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header p.subtitle {
+    color: #aaa;
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    margin: 0.5rem auto 0;
+    max-width: 600px;
+    line-height: 1.6;
+    font-weight: 300;
+    padding: 0 1rem;
+}
+
+/* Efecto de partículas */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+/* Efecto de brillo al pasar el ratón */
+header h1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+header h1:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 2.5rem 1rem;
+    }
+    
+    header h1 {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+        padding: 0 1rem;
+    }
+    
+    header p.subtitle {
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
+        margin-top: 0.5rem;
+    }
+}
+
+/* Estilos del contenido principal */
+main {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+section p {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: white;
+    margin-top: auto;
+}
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: var(--dark-color);
+    color: white;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+}
+
+/* Efectos y animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content-wrapper {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Estilos de la calculadora */
+.calculator-container {
+    max-width: 400px;
+    margin: 3rem auto 2rem auto;
+    padding: 1.5rem;
+    background: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+} 
+
+.calculator {
+    width: 100%;
+}
+
+.display {
+    margin-bottom: 1rem;
+}
+
+.display {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.display input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+    text-align: right;
+    border: none;
+    border-radius: 8px;
+    background: #1a1a1a;
+    color: #f7df1e;
+    font-family: 'Fira Code', monospace;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3) inset;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.expression {
+    color: #888;
+    text-align: right;
+    min-height: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} 
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+} 
+
+.operator, .sci-operator {
+    padding: 0.8rem 0.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background: #3a3a3a;
+    color: #f7df1e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Fira Code', monospace;
+    min-height: 45px;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sci-operator {
+    font-size: 0.9rem;
+    background: #2a2a2a;
+    color: #8bc34a;
+}
+
+.equal {
+    background: #4CAF50 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.operator:hover, .sci-operator:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.operator:active, .sci-operator:active {
+    transform: translateY(0);
+}
+
+.operator:hover {
+    background: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+.operator:active {
+    transform: translateY(0);
+}
+
+.operator:nth-child(4n+4),
+.operator:last-child {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.operator:nth-child(4n+4):hover,
+.operator:last-child:hover {
+    background: #ffeb3b;
+}
+
+.operator[onclick="clearDisplay()"] {
+    background: #ff4444;
+    color: white;
+}
+
+.operator[onclick="clearDisplay()"]:hover {
+    background: #ff6666;
+}
+
+.operator[onclick="calculate()"] {
+    background: #4CAF50;
+    color: white;
+}
+
+.operator[onclick="calculate()"]:hover {
+    background: #66bb6a;
+}
+
+/* Estilos para la calculadora de inflación simplificada */
+.inflation-calculator {
+    max-width: 500px;
+    margin: 3rem auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    background: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.inflation-calculator h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.inflation-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-group label {
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.input-group input {
+    padding: 1rem;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #2a2a2a;
+    color: #f7df1e;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-family: 'Fira Code', monospace;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(247, 223, 30, 0.2);
+}
+
+.result-simple {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: #2a2a2a;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-simple span:first-child {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+/* Estilos para la Calculadora de Porcentaje de Incremento */
+.percentage-calculator {
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.percentage-calculator h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .inflation-calculator {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .input-group input {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+    
+    .highlight {
+        font-size: 1.5rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+
+}
