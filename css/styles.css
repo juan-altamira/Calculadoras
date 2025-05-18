@@ -433,34 +433,92 @@ footer {
 .percentage-calculator > .input-group {
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    .inflation-calculator {
-        margin: 2rem 1rem;
+/* Puntos de quiebre responsivos */
+@media (max-width: 1200px) {
+    /* Estilos para pantallas grandes pero no tan anchas */
+    .calculator-container,
+    .inflation-calculator,
+    .percentage-calculator {
+        width: 95%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Estilos para tablets grandes */
+    .calculator-container,
+    .inflation-calculator,
+    .percentage-calculator {
+        width: 90%;
+        margin: 2rem auto;
         padding: 1.5rem;
     }
     
-    .input-group input {
+    .calculator-container h2,
+    .inflation-calculator h2,
+    .percentage-calculator h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Estilos para tablets pequeñas */
+    .calculator-container,
+    .inflation-calculator,
+    .percentage-calculator {
+        width: 95%;
+        margin: 1.5rem auto;
+        padding: 1.2rem;
+    }
+    
+    .input-group input,
+    .display input {
+        font-size: 1.4rem;
+        padding: 0.9rem;
+    }
+    
+    .result-simple {
+        padding: 1.2rem;
+    }
+    
+    .highlight {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Estilos para móviles */
+    .calculator-container,
+    .inflation-calculator,
+    .percentage-calculator {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    
+    .calculator-container h2,
+    .inflation-calculator h2,
+    .percentage-calculator h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .input-group input,
+    .display input {
         font-size: 1.2rem;
         padding: 0.8rem;
     }
     
+    .result-simple {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
     .highlight {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
-    
-
 }
