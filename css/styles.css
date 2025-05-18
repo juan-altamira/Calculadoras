@@ -36,9 +36,11 @@ header {
     color: #fff;
     padding: 4rem 1rem;
     text-align: center;
-    margin-bottom: 3rem;
+    margin: 0 auto 1.5rem;  /* Reducido de 3rem a 1.5rem */
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 
 header::before {
@@ -491,12 +493,17 @@ footer {
 
 @media (max-width: 576px) {
     /* Estilos para móviles */
+    header {
+        padding: 2.5rem 1rem;
+        margin-bottom: 1.5rem;  /* Reducido de 2.5rem a 1.5rem */
+    }
+    
     .calculator-container,
     .inflation-calculator,
     .percentage-calculator {
         width: 100%;
-        margin: 3.5rem auto;  /* Aumentado de 2.5rem a 3.5rem */
-        padding: 1.5rem;     /* Aumentado de 1.2rem a 1.5rem */
+        margin: 3.5rem auto;
+        padding: 1.5rem;
         border-radius: 10px;
     }
     
