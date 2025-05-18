@@ -495,9 +495,18 @@ footer {
     .inflation-calculator,
     .percentage-calculator {
         width: 100%;
-        margin: 1rem auto;
-        padding: 1rem;
+        margin: 3.5rem auto;  /* Aumentado de 2.5rem a 3.5rem */
+        padding: 1.5rem;     /* Aumentado de 1.2rem a 1.5rem */
         border-radius: 10px;
+    }
+    
+    /* Añadir más espacio después de cada sección en móviles */
+    .calculator-container {
+        margin-bottom: 4rem;  /* Aumentado de 3rem a 4rem */
+    }
+    
+    .inflation-calculator {
+        margin: 3.5rem auto;  /* Aumentado de 2.5rem a 3.5rem */
     }
     
     .calculator-container h2,
