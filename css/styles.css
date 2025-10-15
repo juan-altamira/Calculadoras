@@ -158,7 +158,12 @@ header h1:hover::after {
 /* Estilos del contenido principal */
 main {
     flex: 1;
-    padding: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
 }
 
 section h2 {
@@ -200,9 +205,10 @@ footer {
 .calculator-container,
 .inflation-calculator,
 .percentage-calculator {
-    max-width: 400px;
-    width: 90%;
-    margin: 3rem auto;
+    flex: 1 1 320px;
+    max-width: 380px;
+    width: 100%;
+    margin: 0;
     padding: 1.5rem;
     background: var(--secondary-color);
     border-radius: 15px;
@@ -444,19 +450,26 @@ footer {
     .calculator-container,
     .inflation-calculator,
     .percentage-calculator {
-        width: 95%;
-        max-width: 500px;
+        flex: 1 1 280px;
+        max-width: 350px;
     }
 }
 
 @media (max-width: 992px) {
     /* Estilos para tablets grandes */
+    main {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
     .calculator-container,
     .inflation-calculator,
     .percentage-calculator {
-        width: 90%;
-        margin: 2rem auto;
-        padding: 1.5rem;
+        flex: 1 1 100%;
+        max-width: 420px;
+        width: 100%;
+        margin: 0;
     }
     
     .calculator-container h2,
@@ -471,8 +484,8 @@ footer {
     .calculator-container,
     .inflation-calculator,
     .percentage-calculator {
-        width: 95%;
-        margin: 1.5rem auto;
+        width: 100%;
+        margin: 0;
         padding: 1.2rem;
     }
     
@@ -497,23 +510,28 @@ footer {
         padding: 2.5rem 1rem;
         margin-bottom: 1.5rem;  /* Reducido de 2.5rem a 1.5rem */
     }
+
+    main {
+        padding: 1.5rem 1rem;
+        gap: 1.25rem;
+    }
     
     .calculator-container,
     .inflation-calculator,
     .percentage-calculator {
         width: 100%;
-        margin: 3.5rem auto;
+        margin: 0;
         padding: 1.5rem;
         border-radius: 10px;
     }
     
     /* Añadir más espacio después de cada sección en móviles */
     .calculator-container {
-        margin-bottom: 4rem;  /* Aumentado de 3rem a 4rem */
+        margin-bottom: 0;  /* Ajustado para usar el espacio del gap */
     }
     
     .inflation-calculator {
-        margin: 3.5rem auto;  /* Aumentado de 2.5rem a 3.5rem */
+        margin: 0;
     }
     
     .calculator-container h2,
